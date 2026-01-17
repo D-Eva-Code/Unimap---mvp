@@ -9,12 +9,16 @@ const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-const {createUserAccountS} = require('../controller/createStudentC');
-const {createUserAccountV} = require('../controller/createVendorC');
+
+const {RegisterUsers} = require('../controller/createUserC');
+const {loginController} = require('../controller/loginC');
 
 
-app.post('/user/register', createUserAccountS);
-app.post('/vendor/register', createUserAccountV);
+app.post('/user/register', RegisterUsers);
+app.post('/user/login', loginController);
+
+// app.post('/Register', createUserAccountS);
+// app.post('/vendor/register', createUserAccountV);
 
 
 app.use(express.json());

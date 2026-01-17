@@ -2,7 +2,7 @@ const SqlObject ={
     findD: 'SELECT * FROM drivers_tb where fullname Like ?',
     findS: 'SELECT * FROM students_tb where fullname Like ?',
     findV: 'SELECT * FROM vendors_tb where vendor_name Like ?',
-    addDriver: "insert into drivers_tb (fullname,email, password) values (?, ?, ?)",
+    addDriver: "insert into drivers_tb (fullname,email, passwd) values (?, ?, ?)",
     addStudent: "insert into students_tb (fullname,email, passwd) values (?, ?, ?)",
     addVendor: "insert into vendors_tb (vendor_name,email,passwd) values (?, ?, ?)",
     driverList: 'select * from drivers_tb ORDER BY fullname DESC limit 1 ',
