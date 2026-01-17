@@ -5,7 +5,7 @@ const path = require('path')
 
 dotenv.config({ path :  path.resolve( __dirname , '../../.env')})
 
-const db = mysql.createPool({
+const conpool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -14,4 +14,4 @@ const db = mysql.createPool({
 
 
 
-module.exports = db;
+module.exports = {conpool};
