@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 // Example: Get all drivers
 app.get('/drivers', (req, res) => {
-  db.query('SELECT * FROM drivers', (err, results) => {
+  db.query('SELECT * FROM drivers_tb', (err, results) => {
     if (err) return res.status(500).send(err);
     res.json(results);
   });
@@ -27,7 +27,7 @@ app.get('/drivers', (req, res) => {
 app.post('/drivers', (req, res) => {
   const { student_name } = req.body;
   db.query(
-    'INSERT INTO drivers (student_name) VALUES (?)',
+    'INSERT INTO drivers_tb (student_name) VALUES (?)',
     [student_name],
     (err, result) => {
       if (err) return res.status(500).send(err);
