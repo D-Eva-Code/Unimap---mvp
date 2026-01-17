@@ -12,11 +12,14 @@ app.use(cors());
 
 const {RegisterUsers} = require('../controller/createUserC');
 const {loginController} = require('../controller/loginC');
+const {getVendorsController} = require('../controller/getVendorsC');
+const {getMenuController} = require('../controller/getMenuC');
 
 
 app.post('/user/register', RegisterUsers);
 app.post('/user/login', loginController);
-
+app.get('/vendors', getVendorsController);
+app.get('/vendor/:id/menu', getMenuController);
 // app.post('/Register', createUserAccountS);
 // app.post('/vendor/register', createUserAccountV);
 
