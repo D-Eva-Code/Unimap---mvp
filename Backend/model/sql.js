@@ -14,6 +14,8 @@ const SqlObject ={
     loginSqlV: "select * from vendors_tb where email = ?",
     createKeySql: "insert into apikey (fullname, api_key) values (?,?)",
     fetchKey: "select * from apikey where api_key = ?",
-    fetchVendorMenu: "select  from menu_items where vendor_id = ?"
+    fetchVendorMenu: "SELECT menu_id, item_name, price FROM menu_items WHERE menu_id = ? AND vendor_id = ? AND is_available = TRUE",
+    createOrder: "INSERT INTO orders(order_id, student_id, vendor_id, total_amount, status)VALUES (?, ?, ?, ?, 'pending')",
+    assignDriver: "UPDATE orders SET driver_id = ?, status = ? WHERE order_id = ?"
 }
-module.exports =SqlObject
+module.exports = SqlObject
