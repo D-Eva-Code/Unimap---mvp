@@ -2,12 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Helvetica, Arial, 'Trebuchet MS', sans-serif;
-  
+  font-family: Helvetica, Arial, "Trebuchet MS", sans-serif;
 }
 
-a{
-}
 a {
   text-decoration: none;
   color: #000;
@@ -24,25 +21,26 @@ a {
 
 .signup-content {
   /* border: 1px solid; */
-  width:400px;
-  
+  width: 400px;
 }
 
-.signup-content h1,p{
+.signup-content h1,
+p {
   text-align: center;
 }
 
-.signupintro{
+.signupintro {
   font-size: 29px;
 }
 
-.sign-up-descr{
+.sign-up-descr {
   margin-top: 3%;
   font-size: 18px;
 }
 
-.form-container{
+.form-container {
   margin-top: 9%;
+}
 .signup-content h1,
 p {
   text-align: center;
@@ -52,7 +50,7 @@ p {
   flex-direction: column;
 }
 
-.form-container input{
+.form-container input {
   margin-top: 3%;
   margin-bottom: 6%;
   padding: 3%;
@@ -62,7 +60,7 @@ p {
   background-color: #dbefef;
 }
 
-.form-container select{
+.form-container select {
   margin-top: 3%;
   margin-bottom: 6%;
   padding: 3%;
@@ -72,7 +70,7 @@ p {
   background-color: #dbefef;
 }
 
-.form-container button{
+.form-container button {
   margin-top: 3%;
   margin-bottom: 1%;
   padding: 3%;
@@ -82,14 +80,12 @@ p {
   background-color: #06b5af;
 }
 
-.signin{
+.signin {
   margin-left: 6px;
 }
 
- .redirect{
+.redirect {
   font-size: 0.7em;
- 
-  
 }
 /* nav bar style */
 .nav-wrapper {
