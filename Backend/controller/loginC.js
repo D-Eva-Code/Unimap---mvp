@@ -37,7 +37,7 @@ async function loginController(req,res) {
             return res.json({success:false, status:401, mess:"Invalid email"})
         }
     }
-    const user = result[0];
+    const user = result.user;
 
     const validate = await bcrypt.compare(password, user.passwd);
     if (!validate) {
