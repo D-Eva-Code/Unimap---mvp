@@ -1,98 +1,114 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSignup(e) {
+  const navigate = useNavigate();
+
+  async function handleSignin(e) {
     e.preventDefault();
 
     if (!role) {
-      alert("Please select your role");
+      setError("Please select your role");
       return;
     }
 
-    // Reset form
+    setError("");
+    setLoading(true);
 
-    setEmail("");
-    setPassword("");
-    setRole("");
+    try {
+      // Replace this URL with your backend login endpoint
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // send email, password, role
+        body: JSON.stringify({ email, password, role }),
+        // important for cookie-based auth
+        credentials: "include",
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      // Reset form
+      setEmail("");
+      setPassword("");
+      setRole("");
+
+      // Redirect to dashboard or home
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <>
-      <div className="signup-wrapper">
-        <div className="signup-content">
-          <h1>Welcome Back</h1>
-          <p>Sign in to continue to UniMap+</p>
+    <div className="signin-wrapper">
+      <div className="signin-content">
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue to UniMap+</p>
 
-          <form onSubmit={handleSignup}>
-            <div className="form-container">
-              <label
-                htmlFor="email"
-                className="signup-label
-              "
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                placeholder="Enter your email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                required
-              />
+        <form onSubmit={handleSignin}>
+          <div className="form-container">
+            <label htmlFor="email" className="signin-label">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-              <label
-                htmlFor="password"
-                className="signup-label
-              "
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                placeholder="Enter your password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                required
-              />
+            <label htmlFor="password" className="signin-label">
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-              <label
-                htmlFor="role"
-                className="signup-label
-              "
-              >
-                I am a
-              </label>
-              <select
-                value={role}
-                onChange={(e) => {
-                  setRole(e.target.value);
-                }}
-                required
-              >
-                <option value="">Select your role</option>
-                <option value="student">Student</option>
-                <option value="vendor">Vendor</option>
-                <option value="driver">Driver</option>
-              </select>
+            <label htmlFor="role" className="signin-label">
+              I am a
+            </label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="">Select your role</option>
+              <option value="student">Student</option>
+              <option value="vendor">Vendor</option>
+              <option value="driver">Driver</option>
+            </select>
 
-              <button className="signup-btn">Sign In</button>
-              <p className="redirect">
-                Need help? <NavLink to="/support">Contact support</NavLink>
-              </p>
-            </div>
-          </form>
-        </div>
+            {error && <p className="error-message">{error}</p>}
+
+            <button type="submit" className="signin-btn" disabled={loading}>
+              {loading ? "Signing In..." : "Sign In"}
+            </button>
+
+            <p className="redirect">
+              Need help? <NavLink to="/support">Contact support</NavLink>
+            </p>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 
