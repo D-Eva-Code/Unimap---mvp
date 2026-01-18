@@ -22,29 +22,27 @@ function Login() {
     setLoading(true);
 
     try {
-      // Replace this URL with your backend login endpoint
-      const response = await fetch("/api/login", {
+      const response = await fetch("http://localhost:5000/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // send email, password, role
         body: JSON.stringify({ email, password, role }),
-        // important for cookie-based auth
-        credentials: "include",
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
-      }
+      if (!response.ok) throw new Error(data.mess || "Login failed");
+      console.log("Login success:", data);
+      localStorage.setItem("token", data.token);
 
       // Reset form
       setEmail("");
       setPassword("");
       setRole("");
 
-      // Redirect to dashboard or home
-      navigate("/dashboard");
+      alert("Login successful!");
+      // if (role === 'student') navigate("/student/dashboard");
+      // else if (role === 'vendor') navigate("/vendor/dashboard");
+      // else navigate("/driver/dashboard");
     } catch (err) {
       setError(err.message);
     } finally {
