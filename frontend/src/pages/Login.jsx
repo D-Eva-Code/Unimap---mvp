@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Signup() {
-  const [fullName, setFullName] = useState("");
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const navigate = useNavigate();
 
   function handleSignup(e) {
     e.preventDefault();
@@ -15,14 +13,9 @@ function Signup() {
       alert("Please select your role");
       return;
     }
-    navigate("/login");
-
-    // for backen API
-    const formData = { fullName, email, password, role };
-    console.log("Form Submitted:", formData);
 
     // Reset form
-    setFullName("");
+
     setEmail("");
     setPassword("");
     setRole("");
@@ -32,28 +25,11 @@ function Signup() {
     <>
       <div className="signup-wrapper">
         <div className="signup-content">
-          <h1>Create an Account</h1>
-          <p>Sign up to get started with UniMap+</p>
+          <h1>Welcome Back</h1>
+          <p>Sign in to continue to UniMap+</p>
 
           <form onSubmit={handleSignup}>
             <div className="form-container">
-              <label
-                htmlFor="fullname"
-                className="signup-label
-              "
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                value={fullName}
-                placeholder="Enter your full name"
-                onChange={(e) => {
-                  setFullName(e.target.value);
-                }}
-                required
-              />
-
               <label
                 htmlFor="email"
                 className="signup-label
@@ -108,9 +84,9 @@ function Signup() {
                 <option value="driver">Driver</option>
               </select>
 
-              <button className="signup-btn">Sign Up</button>
+              <button className="signup-btn">Sign In</button>
               <p className="redirect">
-                Already have an account? <NavLink to="/login">Sign in</NavLink>
+                Need help? <NavLink to="/support">Contact support</NavLink>
               </p>
             </div>
           </form>
@@ -120,4 +96,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;
