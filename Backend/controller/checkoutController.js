@@ -1,6 +1,6 @@
 const crypto = require('crypto');
-const { getMenuItem } = require('../models/menuModel');
-const { createOrder } = require('../models/orderModel');
+const {getMenu} = require('../model/getMenu');
+const {createOrder} = require('../model/orderModel');
 
 async function checkout(req, res) {
   const { vendorId, cart } = req.body;
@@ -16,7 +16,7 @@ async function checkout(req, res) {
     let total = 0;
 
     for (const item of cart) {
-      const menu = await getMenuItem(item.menuId, vendorId);
+      const menu = await getMenu(item.menuId, vendorId);
 
       if (!menu) {
         return res.status(400).json({ message: 'Invalid menu item' });
