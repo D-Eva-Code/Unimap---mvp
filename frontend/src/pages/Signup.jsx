@@ -29,8 +29,8 @@ function Signup() {
     <>
       <div className="signup-wrapper">
         <div className="signup-content">
-          <h1>Create an Account</h1>
-          <p>Sign up to get started with UniMap+</p>
+          <h1 className="signupintro">Create an Account</h1>
+          <p className="sign-up-descr"> Sign up to get started with UniMap+</p>
 
           <form onSubmit={handleSignup}>
             <div className="form-container">
@@ -107,7 +107,7 @@ function Signup() {
 
               <button className="signup-btn">Sign Up</button>
               <p className="redirect">
-                Already have an account? <NavLink to="/login">Sign in</NavLink>
+                Already have an account?  <NavLink to="/login" className="signin">Sign in</NavLink>
               </p>
             </div>
           </form>

@@ -2,12 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Helvetica, Arial, 'Trebuchet MS', sans-serif;
   
 }
+
 a{
   text-decoration: none;
   color: #000;
+  font-weight: bold;
 }
+
 /*sign up form style */
 .signup-wrapper{
   display: flex;
@@ -16,10 +20,68 @@ a{
   height: 100vh;
 
 }
+
+.signup-content {
+  /* border: 1px solid; */
+  width:400px;
+  
+}
+
 .signup-content h1,p{
   text-align: center;
 }
+
+.signupintro{
+  font-size: 29px;
+}
+
+.sign-up-descr{
+  margin-top: 3%;
+  font-size: 18px;
+}
+
 .form-container{
+  margin-top: 9%;
   display: flex;
   flex-direction: column;
+}
+
+.form-container input{
+  margin-top: 3%;
+  margin-bottom: 6%;
+  padding: 3%;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #dbefef;
+}
+
+.form-container select{
+  margin-top: 3%;
+  margin-bottom: 6%;
+  padding: 3%;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #dbefef;
+}
+
+.form-container button{
+  margin-top: 3%;
+  margin-bottom: 1%;
+  padding: 3%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #06b5af;
+}
+
+.signin{
+  margin-left: 6px;
+}
+
+ .redirect{
+  font-size: 0.7em;
+ 
+  
 }
