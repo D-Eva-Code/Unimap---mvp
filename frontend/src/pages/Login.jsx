@@ -61,62 +61,53 @@ function Login() {
   }
 
   return (
-    <div className="signin-wrapper">
-      <div className="signin-content">
-        <h1>Welcome Back</h1>
-        <p>Sign in to continue to UniMap+</p>
+    // Inside your Login.jsx return statement
+<div className="signin-wrapper">
+  <div className="signin-content">
+    <h1 style={{ color: "#005850" }}>Welcome Back</h1>
+    <p style={{ color: "#666" }}>Sign in to continue to UniMap+</p>
 
-        <form onSubmit={handleSignin}>
-          <div className="form-container">
-            <label htmlFor="email" className="signin-label">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+    <form onSubmit={handleSignin}>
+      <div className="form-container">
+        <label className="signin-label">Email</label>
+        <input
+          type="email"
+          value={email}
+          placeholder="Enter your email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-            <label htmlFor="password" className="signin-label">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+        <label className="signin-label">Password</label>
+        <input
+          type="password"
+          value={password}
+          placeholder="Enter your password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-            <label htmlFor="role" className="signin-label">
-              I am a
-            </label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              required
-            >
-              <option value="">Select your role</option>
-              <option value="student">Student</option>
-              <option value="vendor">Vendor</option>
-              <option value="driver">Driver</option>
-            </select>
+        <label className="signin-label">I am a</label>
+        <select value={role} onChange={(e) => setRole(e.target.value)} required>
+          <option value="">Select your role</option>
+          <option value="student">Student</option>
+          <option value="vendor">Vendor</option>
+          <option value="driver">Driver</option>
+        </select>
 
-            {error && <p className="error-message">{error}</p>}
+        {error && <p style={{ color: "red", fontSize: "12px", textAlign: "center" }}>{error}</p>}
 
-            <button type="submit" className="signin-btn" disabled={loading}>
-              {loading ? "Signing In..." : "Sign In"}
-            </button>
+        <button type="submit" className="signin-btn" disabled={loading}>
+          {loading ? "Signing In..." : "Sign In"}
+        </button>
 
-            <p className="redirect">
-              Need help? <NavLink to="/support">Contact support</NavLink>
-            </p>
-          </div>
-        </form>
+        <p className="redirect" style={{ textAlign: "center", marginTop: "15px" }}>
+          Don't have an account? <NavLink to="/signup" style={{ color: "#06b5af" }}>Sign Up</NavLink>
+        </p>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
   );
 }
 

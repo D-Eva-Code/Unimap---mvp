@@ -79,13 +79,11 @@ a {
 
 }
 
-/* button hover */
 .form-container button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* button click */
 .form-container button:active {
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
@@ -140,7 +138,44 @@ a {
   transition: transform 0.2s ease;
 }
 
-/* icon hover */
 .icon:hover {
   transform: scale(1.1);
+}
+
+.signin-wrapper, .signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff; 
+}
+
+.signin-content, .signup-content {
+  width: 100%;
+  max-width: 400px; 
+  padding: 20px;
+}
+
+.signin-content h1, 
+.signin-content p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.signin-label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #005850;
+  margin-top: 10px;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+  color: #005850; 
+  margin-top: 10px;
+  margin-bottom: 2px;
 }

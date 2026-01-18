@@ -16,11 +16,6 @@ function Signup() {
       return;
     }
 
-    
-
-    navigate("/login");
-
-
 
     const formData = { fullName, email, password, role };
     // console.log("Form Submitted:", formData);
@@ -42,7 +37,7 @@ function Signup() {
 
     console.log("Signup success:", data);
     alert("Account created successfully!");
-
+    navigate("/login");
     // Reset form
     setFullName("");
     setEmail("");
@@ -63,76 +58,41 @@ function Signup() {
 
           <form onSubmit={handleSignup}>
             <div className="form-container">
-              <label
-                htmlFor="fullname"
-                className="signup-label
-              "
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                value={fullName}
-                placeholder="Enter your full name"
-                onChange={(e) => {
-                  setFullName(e.target.value);
-                }}
-                required
-              />
+                
+            <label htmlFor="fullname" className="form-label">Full Name</label>
+            <input
+              type="text"
+              value={fullName}
+              placeholder="Enter your full name"
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
 
-              <label
-                htmlFor="email"
-                className="signup-label
-              "
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                placeholder="Enter your email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                required
-              />
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-              <label
-                htmlFor="password"
-                className="signup-label
-              "
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                placeholder="Enter your password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                required
-              />
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-              <label
-                htmlFor="role"
-                className="signup-label
-              "
-              >
-                I am a
-              </label>
-              <select
-                value={role}
-                onChange={(e) => {
-                  setRole(e.target.value);
-                }}
-                required
-              >
-                <option value="">Select your role</option>
-                <option value="student">Student</option>
-                <option value="vendor">Vendor</option>
-                <option value="driver">Driver</option>
-              </select>
+            <label htmlFor="role" className="form-label">I am a</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)} required>
+              <option value="">Select your role</option>
+              <option value="student">Student</option>
+              <option value="vendor">Vendor</option>
+              <option value="driver">Driver</option>
+            </select>
 
               <button className="signup-btn">Sign Up</button>
               <p className="redirect">
