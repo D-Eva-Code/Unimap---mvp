@@ -14,8 +14,11 @@ const {RegisterUsers} = require('../controller/createUserC');
 const {loginController} = require('../controller/loginC');
 const {getVendorsController} = require('../controller/getVendorsC');
 const {getMenuController} = require('../controller/getMenuC');
+const {auth} = require('../middleware/auth');
+const {checkout} = require('../controller/checkoutController');
 
 
+app.post('/checkout', auth, checkout);
 app.post('/user/register', RegisterUsers);
 app.post('/user/login', loginController);
 app.get('/vendors', getVendorsController);

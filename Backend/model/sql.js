@@ -16,6 +16,9 @@ const SqlObject ={
     fetchKey: "select * from apikey where api_key = ?",
     fetchVendorMenu: "SELECT menu_id, item_name, price FROM menu_items WHERE menu_id = ? AND vendor_id = ? AND is_available = TRUE",
     createOrder: "INSERT INTO orders(order_id, student_id, vendor_id, total_amount, status)VALUES (?, ?, ?, ?, 'pending')",
-    assignDriver: "UPDATE orders SET driver_id = ?, status = ? WHERE order_id = ?"
+    assignDriver: "UPDATE orders SET driver_id = ?, status = ? WHERE order_id = ?",
+    orderDetails: "SELECT * FROM orders WHERE order_id = ?",
+    marksOrderPaid: "UPDATE orders SET status = 'accepted' WHERE order_id = ?",
+    saveOrderItems: "INSERT INTO order_items (order_id, item_name, quantity, price) VALUES (?, ?, ?, ?)"
 }
 module.exports = SqlObject
