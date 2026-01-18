@@ -73,15 +73,13 @@ function UniMap() {
   const [userName, setUserName] = useState("Guest User");
 
   useEffect(() => {
-    // 1. Get the token from storage (check what key your backend uses, e.g., 'token')
+   
     const token = localStorage.getItem("token"); 
 
     if (token) {
       try {
-        // 2. Decode the token
         const decoded = jwtDecode(token);
-        
-        // 3. Set the name (Check your token structure, it might be decoded.name or decoded.username)
+        console.log(decoded);
         if (decoded.name) {
           setUserName(decoded.name);
         }

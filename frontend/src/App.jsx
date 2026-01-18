@@ -11,23 +11,22 @@ import RootLayout from "./layout/RootLayout";
 import VendorDashboard from "./pages/VendorDashboard";
 import RiderDashboard from "./pages/RiderDashboard";
 import MapPage from "./pages/MapPage";
+import ProtectedRoute from "./component/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        {/* Default page */}
+        {/* Public */}
         <Route index element={<Signup />} />
-
-        {/* Auth */}
         <Route path="login" element={<Login />} />
 
-        {/* Dashboards */}
-        <Route path="vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="rider-dashboard" element={<RiderDashboard />} />
-
-        {/* Map */}
-        <Route path="map" element={<MapPage />} />
+        {/* Protected */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="vendor-dashboard" element={<VendorDashboard />} />
+          <Route path="rider-dashboard" element={<RiderDashboard />} />
+          <Route path="map" element={<MapPage />} />
+        </Route>
       </Route>
     )
   );

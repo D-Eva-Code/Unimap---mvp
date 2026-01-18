@@ -46,9 +46,10 @@ async function loginController(req,res) {
 
     const payload = {
       id: user.userid || user.st_id || user.vendor_id,
-      role
+      role,
+      name: user.fullname || user.driver_name || user.vendor_name,
     };
-
+    
     const token = jwt.sign(payload, secretKey, {
       expiresIn: '2h'
     });

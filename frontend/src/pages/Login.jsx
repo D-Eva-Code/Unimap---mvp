@@ -39,15 +39,19 @@ function Login() {
       setPassword("");
       setRole("");
 
-      alert("Login successful!");
+      // alert("Login successful!");
 
       // role based
       if (role === "vendor") {
         navigate("/vendor-dashboard"); // vendor dashboard
       } else if (role === "driver") {
         navigate("/rider-dashboard"); // rider dashboard
+      }
+        else if (role === "student") {
+        navigate("/map"); // student map page
+  
       } else {
-        setError("Role not recognized or not supported yet");
+        navigate("/login");
       }
     } catch (err) {
       setError(err.message);
