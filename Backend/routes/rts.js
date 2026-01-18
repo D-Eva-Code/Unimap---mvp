@@ -21,6 +21,18 @@ const {getMenuController} = require('../controller/getMenuC');
 const {auth} = require('../middleware/auth');
 const {checkout} = require('../controller/checkoutController');
 
+const {
+  fetchAllLocations,
+  searchCampusLocations,
+  addCampusLocation
+} = require('../controller/campusLocationController');
+
+
+app.get('/locations', fetchAllLocations);
+app.get('/locations/search', searchCampusLocations);
+
+// Admin
+app.post('/locations', addCampusLocation);
 
 app.post('/checkout', auth, checkout);
 app.post('/user/register', RegisterUsers);

@@ -3,18 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Helvetica, Arial, 'Trebuchet MS', sans-serif;
-  
 }
 
-a{
-}
 a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
 }
 
-/*sign up form style */
+
+
 .signup-wrapper {
   display: flex;
   justify-content: center;
@@ -23,36 +21,32 @@ a {
 }
 
 .signup-content {
-  /* border: 1px solid; */
-  width:400px;
-  
+  width: 400px;
 }
 
-.signup-content h1,p{
+.signup-content h1,
+.signup-content p {
   text-align: center;
 }
 
-.signupintro{
+.signupintro {
   font-size: 29px;
 }
 
-.sign-up-descr{
+.sign-up-descr {
   margin-top: 3%;
   font-size: 18px;
 }
 
-.form-container{
-  margin-top: 9%;
-.signup-content h1,
-p {
-  text-align: center;
-}
+
 .form-container {
+  margin-top: 9%;
   display: flex;
   flex-direction: column;
 }
 
-.form-container input{
+.form-container input,
+.form-container select {
   margin-top: 3%;
   margin-bottom: 6%;
   padding: 3%;
@@ -60,19 +54,17 @@ p {
   outline: none;
   border-radius: 7px;
   background-color: #dbefef;
+  transition: all 0.25s ease; 
 }
 
-.form-container select{
-  margin-top: 3%;
-  margin-bottom: 6%;
-  padding: 3%;
-  border: none;
-  outline: none;
-  border-radius: 7px;
-  background-color: #dbefef;
+
+.form-container input:focus,
+.form-container select:focus {
+  background-color: #f4ffff;
+  box-shadow: 0 0 0 2px rgba(6, 181, 175, 0.35);
 }
 
-.form-container button{
+.form-container button {
   margin-top: 3%;
   margin-bottom: 1%;
   padding: 3%;
@@ -80,18 +72,34 @@ p {
   outline: none;
   border-radius: 5px;
   background-color: #06b5af;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #fff;
+  font-weight: bold;
+
 }
 
-.signin{
+/* button hover */
+.form-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* button click */
+.form-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.signin {
   margin-left: 6px;
 }
 
- .redirect{
+.redirect {
   font-size: 0.7em;
- 
-  
 }
-/* nav bar style */
+
+/* navbar */
 .nav-wrapper {
   border: 1px solid;
   display: flex;
@@ -99,6 +107,7 @@ p {
   align-items: center;
   padding: 10px 50px;
 }
+
 .left {
   display: flex;
   gap: 10px;
@@ -114,10 +123,12 @@ p {
   align-items: center;
   border-radius: 5px;
 }
+
 .right {
   display: flex;
   gap: 30px;
 }
+
 .icon {
   border: 1px solid;
   width: 30px;
@@ -126,4 +137,10 @@ p {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+/* icon hover */
+.icon:hover {
+  transform: scale(1.1);
 }
