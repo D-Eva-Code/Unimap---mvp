@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
   function handleSignup(e) {
     e.preventDefault();
@@ -14,6 +15,8 @@ function Signup() {
       alert("Please select your role");
       return;
     }
+    navigate("/login");
+
     // for backen API
     const formData = { fullName, email, password, role };
     console.log("Form Submitted:", formData);
