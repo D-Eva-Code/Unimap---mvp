@@ -41,11 +41,13 @@ function Login() {
 
       alert("Login successful!");
 
-      // For now, only vendor dashboard
+      // role based
       if (role === "vendor") {
-        navigate("/dashboard"); // <-- matches your nested route
+        navigate("/vendor-dashboard"); // vendor dashboard
+      } else if (role === "driver") {
+        navigate("/rider-dashboard"); // rider dashboard
       } else {
-        setError("Only vendor login is allowed for now");
+        setError("Role not recognized or not supported yet");
       }
     } catch (err) {
       setError(err.message);
