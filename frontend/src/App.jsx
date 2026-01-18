@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import RootLayout from "./layout/RootLayout";
+import VendorDashboard from "./pages/VendorDashboard";
 
 function App() {
   const router = createBrowserRouter(
@@ -13,6 +15,10 @@ function App() {
       <>
         <Route path="/" element={<Signup />} />
         <Route path="login" element={<Login />} />
+
+        <Route path="/dashboard" element={<RootLayout />}>
+          <Route index element={<VendorDashboard />} />
+        </Route>
       </>,
     ),
   );
