@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 async function RegisterUsers(req,res) {   
     try{
-        const {fullname,email,password,role} = req.body
+        const {fullName,email,password,role} = req.body
         const h_password = await bcrypt.hash(password, 10)
         let result;
         
@@ -18,7 +18,7 @@ async function RegisterUsers(req,res) {
         if (checkUser.exists){
             return res.status(400).json({mess: "Vendor already exists"});
     }
-     result = await CreateUserModelV(fullname, email, h_password);
+     result = await CreateUserModelV(fullName, email, h_password);
     console.log(result);
     }
     else if (role === 'driver') {
@@ -26,7 +26,7 @@ async function RegisterUsers(req,res) {
         if (checkUser.exists){
             return res.status(400).json({mess: "Driver already exists"});
     }
-     result = await CreateUserModelD(fullname, email, h_password);
+     result = await CreateUserModelD(fullName, email, h_password);
     console.log(result);
     }
     else if (role === 'student') {
@@ -34,13 +34,13 @@ async function RegisterUsers(req,res) {
         if (checkUser.exists){
             return res.status(400).json({mess: "Student already exists"});
     }
-     result = await CreateUserModelS(fullname, email, h_password);
+     result = await CreateUserModelS(fullName, email, h_password);
     console.log(result);
     }
         if (!result){
             return res.status(500).json({mess: result.message});
         }
-        return res.status(201).json({mess: "New vendor added successfully", userid: result.userid, user:result.fullname, apikey: result.apikey});
+        return res.status(201).json({mess: `New ${role} added successfully`, userid: result.userid, user:result.fullname, apikey: result.apikey});
     }
     catch(error){
         console.log(error.message);

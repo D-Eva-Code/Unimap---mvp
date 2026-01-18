@@ -37,16 +37,26 @@ async function loginController(req,res) {
             return res.json({success:false, status:401, mess:"Invalid email"})
         }
     }
-        const validate = await bcrypt.compare(password, result[0].passwd);
-        if (!validate){
-            return res.json({success:false, status:401, mess:"Invalid password"})
-        }
-        const token = jwt.sign(result[0], secretKey);
+    const user = result.user;
+
+    const validate = await bcrypt.compare(password, user.passwd);
+    if (!validate) {
+      return res.status(401).json({ message: 'Invalid password' });
+    }
+
+    const payload = {
+      id: user.userid || user.st_id || user.vendor_id,
+      role
+    };
+
+    const token = jwt.sign(payload, secretKey, {
+      expiresIn: '2h'
+    });
         res.json({success:true, status:200, mess:"Login successful", token: token});
     }
     catch(error){
         console.log(error.message);
-        // return res.status(500).json({success: false, mess: "Internal Server Error"});
+        res.status(500).json({success: false, mess: "Internal Server Error"});
     }
 }
 

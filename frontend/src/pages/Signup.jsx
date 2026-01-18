@@ -8,25 +8,51 @@ function Signup() {
   const [role, setRole] = useState("");
   const navigate = useNavigate();
 
-  function handleSignup(e) {
+  async function handleSignup(e) {
     e.preventDefault();
 
     if (!role) {
       alert("Please select your role");
       return;
     }
+
+    
+
     navigate("/login");
 
-    // for backen API
+
+
     const formData = { fullName, email, password, role };
-    console.log("Form Submitted:", formData);
+    // console.log("Form Submitted:", formData);
+    try {
+    const response = await fetch("http://localhost:5000/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.mess || "Signup failed");
+      return;
+    }
+
+    console.log("Signup success:", data);
+    alert("Account created successfully!");
 
     // Reset form
     setFullName("");
     setEmail("");
     setPassword("");
     setRole("");
+  }catch (error) {
+    console.error("Signup error:", error);
+    alert("Something went wrong");
   }
+}
 
   return (
     <>
