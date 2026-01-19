@@ -48,7 +48,7 @@ function Login() {
         navigate("/rider-dashboard"); // rider dashboard
       }
         else if (role === "student") {
-        navigate("/map"); // student map page
+        navigate("/uni/map"); // student map page
   
       } else {
         navigate("/login");
