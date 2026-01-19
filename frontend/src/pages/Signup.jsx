@@ -56,8 +56,8 @@ function Signup() {
 
   return (
     <>
-      <div className="signup-wrapper">
-        <div className="signup-content">
+      <div className="signing-wrapper">
+        <div className="signing-content">
           <h1 className="signupheader">Create an Account</h1>
           <p className="signup-descrip">Sign up to get started with UniMap+</p>
 
@@ -65,8 +65,7 @@ function Signup() {
             <div className="form-container">
               <label
                 htmlFor="fullname"
-                className="signup-label
-              "
+                className="signup-label"
               >
                 Full Name
               </label>

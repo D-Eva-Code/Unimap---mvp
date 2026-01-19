@@ -54,8 +54,8 @@ function Login() {
   }
 
   return (
-    <div className="signin-wrapper">
-      <div className="signin-content">
+    <div className="signing-wrapper">
+      <div className="signing-content">
         <h1 className="login-header">Welcome Back</h1>
         <p className="login-descrip">Sign in to continue to UniMap+</p>
 

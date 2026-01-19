@@ -13,20 +13,20 @@ a{
 }
 
 /*sign up form style */
-.signin-wrapper{
+.signing-wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.signin-content {
+.signing-content {
   /* border: 1px solid; */
   width:400px;
   
 }
 
-.signup-content h1,p{
+.signing-content h1,p{
   text-align: center;
 }
 
