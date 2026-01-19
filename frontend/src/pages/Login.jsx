@@ -56,8 +56,8 @@ function Login() {
   return (
     <div className="signin-wrapper">
       <div className="signin-content">
-        <h1>Welcome Back</h1>
-        <p>Sign in to continue to UniMap+</p>
+        <h1 className="login-header">Welcome Back</h1>
+        <p className="login-descrip">Sign in to continue to UniMap+</p>
 
         <form onSubmit={handleSignin}>
           <div className="form-container">
@@ -104,7 +104,7 @@ function Login() {
             </button>
 
             <p className="redirect">
-              Need help? <NavLink to="/support">Contact support</NavLink>
+              Need help? <NavLink to="/support" className="contactSupport">Contact support</NavLink>
             </p>
           </div>
         </form>

@@ -1,61 +1,104 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Helvetica, Arial, 'Trebuchet MS', sans-serif;
+  
 }
-a {
+
+a{
   text-decoration: none;
   color: #000;
+  font-weight: bold;
 }
+
 /*sign up form style */
-.signup-wrapper {
+.signin-wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-.signup-content h1,
-p {
+
+.signin-content {
+  /* border: 1px solid; */
+  width:400px;
+  
+}
+
+.signup-content h1,p{
   text-align: center;
 }
-.form-container {
+
+.signup-descrip{
+  margin-top: 3%;
+  font-size: 17px;
+}
+
+.signupheader{
+  font-size: 27px;
+}
+
+.form-container{
+  margin-top: 9%;
   display: flex;
   flex-direction: column;
 }
 
-/* nav bar style */
-.nav-wrapper {
-  border: 1px solid;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 50px;
-}
-.left {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.form-container input{
+  margin-top: 3%;
+  margin-bottom: 6%;
+  padding: 3%;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #dbefef;
 }
 
-.logo {
-  border: 1px solid;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form-container select{
+  margin-top: 3%;
+  margin-bottom: 6%;
+  padding: 3%;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #dbefef;
+}
+
+.form-container button{
+  margin-top: 3%;
+  margin-bottom: 9px;
+  padding: 3%;
+  border: none;
+  outline: none;
   border-radius: 5px;
+  background-color: #06b5af;
 }
-.right {
-  display: flex;
-  gap: 30px;
+
+.signin{
+  margin-left: 5px;
 }
-.icon {
-  border: 1px solid;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
+
+.redirect{
+  font-size: 13px;
+}
+
+
+
+/* log in form style */
+.signin-content h1,p{
+  text-align: center;
+}
+
+.login-header{
+  font-size: 27px;
+}
+
+.login-descrip{
+  margin-top: 3%;
+  font-size: 17px;
+}
+
+.contactSupport{
+  margin-left: 5px;
 }
