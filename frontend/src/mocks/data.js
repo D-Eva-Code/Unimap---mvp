@@ -7,7 +7,7 @@ export const riderDashboardMock = {
   activeDelivery: {
     pickup: "Mama Put Kitchen",
     dropoff: "Hall 3, Room 205",
-    status: "ON_THE_WAY",
+    status: "On",
     eta: 10,
     distance: 1.2,
   },

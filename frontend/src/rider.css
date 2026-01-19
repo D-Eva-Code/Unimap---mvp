@@ -1,0 +1,112 @@
+.rider-dashboard {
+  padding: 40px;
+}
+.availability {
+  width: fit-content;
+}
+.rider-status {
+  font-size: 0.9em;
+}
+
+.delivery {
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.steps {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  margin-top: 35px;
+}
+.active {
+  padding: 10px;
+  width: 150px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #005850;
+}
+.delivered {
+  padding: 10px;
+  width: 150px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #dbefef;
+  color: #fff;
+}
+.active p {
+  font-size: 0.9em;
+  color: #fff;
+}
+.box-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+.box {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.view-status {
+  padding: 10px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: #06b5af;
+  color: #fff;
+  font-weight: bold;
+}
+.box p {
+  font-size: 0.9em;
+}
+.pickup {
+  width: 130px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.delivery-time-box {
+  margin: 20px 0;
+}
+.delivery-time-box p {
+  margin: 5px 0;
+}
+
+.dt {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+.completed-d {
+  display: flex;
+  border: 1px solid;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 3px;
+}
+.primary {
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #005850;
+  color: #fff;
+}
+.vd {
+  font-weight: bold;
+}

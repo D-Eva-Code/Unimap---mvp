@@ -20,15 +20,14 @@ function App() {
         {/* Public */}
         <Route index element={<Signup />} />
         <Route path="login" element={<Login />} />
-
+        <Route path="vendor-dashboard" element={<VendorDashboard />} />
+        <Route path="rider-dashboard" element={<RiderDashboard />} />
         {/* Protected */}
         <Route element={<ProtectedRoute />}>
-          <Route path="vendor-dashboard" element={<VendorDashboard />} />
-          <Route path="rider-dashboard" element={<RiderDashboard />} />
           <Route path="map" element={<MapPage />} />
         </Route>
-      </Route>
-    )
+      </Route>,
+    ),
   );
 
   return <RouterProvider router={router} />;
