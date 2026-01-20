@@ -46,10 +46,8 @@ function Login() {
         navigate("/vendor-dashboard"); // vendor dashboard
       } else if (role === "driver") {
         navigate("/rider-dashboard"); // rider dashboard
-      }
-        else if (role === "student") {
+      } else if (role === "student") {
         navigate("/uni/map"); // student map page
-  
       } else {
         navigate("/login");
       }
@@ -64,6 +62,9 @@ function Login() {
     <>
       <div className="signin-wrapper">
         <div className="signin-content">
+          <p className="unimap">
+            Unimap<span className="plus">+</span>
+          </p>
           <h1 style={{ color: "#005850" }}>Welcome Back</h1>
           <p style={{ color: "#666" }}>Sign in to continue to UniMap+</p>
 

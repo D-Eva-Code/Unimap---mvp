@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Helvetica, Arial, 'Trebuchet MS', sans-serif;
+  font-family: Helvetica, Arial, "Trebuchet MS", sans-serif;
 }
 
 a {
@@ -10,8 +10,6 @@ a {
   color: #000;
   font-weight: bold;
 }
-
-
 
 .signup-wrapper {
   display: flex;
@@ -21,7 +19,8 @@ a {
 }
 
 .signup-content {
-  width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .signup-content h1,
@@ -31,13 +30,14 @@ a {
 
 .signupintro {
   font-size: 29px;
+  margin-top: 30px;
+  color: #005850;
 }
 
 .sign-up-descr {
-  margin-top: 3%;
   font-size: 18px;
+  margin-top: 5px;
 }
-
 
 .form-container {
   margin-top: 9%;
@@ -54,9 +54,15 @@ a {
   outline: none;
   border-radius: 7px;
   background-color: #dbefef;
-  transition: all 0.25s ease; 
+  transition: all 0.25s ease;
 }
-
+.unimap {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+.plus {
+  color: #06b5af;
+}
 
 .form-container input:focus,
 .form-container select:focus {
@@ -76,7 +82,6 @@ a {
   transition: all 0.25s ease;
   color: #fff;
   font-weight: bold;
-
 }
 
 .form-container button:hover {
@@ -142,26 +147,31 @@ a {
   transform: scale(1.1);
 }
 
-.signin-wrapper, .signup-wrapper {
+.signin-wrapper,
+.signup-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ffffff; 
+  background-color: #ffffff;
 }
 
-.signin-content, .signup-content {
+.signin-content,
+.signup-content {
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
   padding: 20px;
 }
+.signin-content {
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
 
-.signin-content h1, 
+.signin-content h1,
 .signin-content p {
   text-align: center;
   margin-bottom: 10px;
 }
-
 
 .signin-label {
   font-weight: bold;
@@ -175,7 +185,7 @@ a {
   text-align: left;
   font-weight: bold;
   font-size: 14px;
-  color: #005850; 
+  color: #005850;
   margin-top: 10px;
   margin-bottom: 2px;
 }

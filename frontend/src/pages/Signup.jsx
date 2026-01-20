@@ -52,6 +52,9 @@ function Signup() {
     <>
       <div className="signup-wrapper">
         <div className="signup-content">
+          <p className="unimap">
+            Unimap<span className="plus">+</span>
+          </p>
           <h1 className="signupintro">Create an Account</h1>
           <p className="sign-up-descr"> Sign up to get started with UniMap+</p>
 
