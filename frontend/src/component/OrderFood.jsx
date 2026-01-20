@@ -97,7 +97,7 @@ const styles = {
     fontSize: "32px",
     fontWeight: "800",
     margin: "0 0 8px 0",
-    color: "#1A202C",
+    color: "#005850",
   },
   subheading: {
     color: "#718096",
@@ -117,6 +117,7 @@ const styles = {
     outline: "none",
     transition: "border-color 0.2s",
     backgroundColor: "#F7FAFC",
+    borderColor: "#158ad8",
   },
   grid: {
     display: "grid",

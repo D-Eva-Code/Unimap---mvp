@@ -2,34 +2,30 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
-// Components
-import Nav from "../component/Nav"; // Using the cleaned up Nav from earlier
+import Nav from "../component/Nav"; 
 import MapTab from "../component/tabs/MapTab";
 import OrderFood from "../component/OrderFood";
 import MyOrders from "../component/tabs/MyOrders";
 import CompletedOrders from "../component/tabs/CompletedOrders";
 
-// Constants
+
 const API_BASE_URL = "http://localhost:5000";
 
 export default function UniMap() {
-  // --- User & Auth State ---
-  const [userName, setUserName] = useState("Guest User");
 
-  // --- Map & Location State ---
+  const [userName, setUserName] = useState("Guest User");
   const [locations, setLocations] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [userPos, setUserPos] = useState(null);
   const [destination, setDestination] = useState(null);
   const [mapCenter, setMapCenter] = useState([6.3996, 5.6145]);
   
-  // Navigation Metrics
+
   const [navigationData, setNavigationData] = useState({
     distance: null,
     eta: null
   });
 
-  // --- Auth Logic ---
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -41,7 +37,6 @@ export default function UniMap() {
     }
   }, []);
 
-  // --- Data Fetching Logic ---
   const fetchLocations = useCallback(async (query = "") => {
     const endpoint = query 
       ? `${API_BASE_URL}/locations/search?q=${encodeURIComponent(query)}`
@@ -78,12 +73,9 @@ export default function UniMap() {
     }, []);
 
   useEffect(() => {
-
-    // 2. Initial Locations Fetch
     fetchLocations();
   }, [fetchLocations]);
 
-  // --- Event Handlers ---
   const handleSearch = () => fetchLocations(searchQuery.trim());
 
   return (
@@ -131,7 +123,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    backgroundColor: "#F7FAFC", // Light grey background to make white cards pop
+    backgroundColor: "#F7FAFC",
     fontFamily: "'Inter', sans-serif",
   },
   contentArea: {

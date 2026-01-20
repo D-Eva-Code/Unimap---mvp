@@ -67,10 +67,9 @@ function RoutingEngine({ start, end, setDistance, setEta }) {
       },
       addWaypoints: false,
       draggableWaypoints: false,
-      show: false, // Hides the text instructions panel
+      show: false, 
     }).addTo(map);
 
-    // 3. Listen for route calculation
     routingControlRef.current.on("routesfound", (e) => {
       const r = e.routes[0];
       if (r?.summary) {
@@ -79,13 +78,12 @@ function RoutingEngine({ start, end, setDistance, setEta }) {
       }
     });
 
-    // 4. Cleanup on unmount or when start/end changes
     return () => {
       if (routingControlRef.current) {
         map.removeControl(routingControlRef.current);
       }
     };
-  }, [map, start, end]); // Simplified dependency array
+  }, [map, start, end]); 
 
   return null;
 }
@@ -114,7 +112,6 @@ export default function MapTab({
     setDestination([loc.latitude, loc.longitude]);
     setMapCenter([loc.latitude, loc.longitude]);
 
-    // Smooth scroll back to map
     mapSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -150,7 +147,7 @@ export default function MapTab({
 
         <div style={styles.mapContainer}>
           <MapContainer
-              center={userPos || mapCenter} // Use userPos first if available
+              center={userPos || mapCenter} //to use userPos first if available
               zoom={16}
               style={{ height: "100%", width: "100%" }}
               zoomControl={false}
@@ -193,7 +190,7 @@ export default function MapTab({
                 }}
                 onClick={() => handleDestinationSelect(loc)}
               >
-                <div style={styles.cardIcon}>📍</div>
+                <div style={styles.cardIcon}>&#x1F4CD;</div>
         <div style={styles.cardDetails}>
           <h4 style={styles.cardName}>{loc.name}</h4>
           {loc.category && <p style={styles.cardSubtext}>{loc.category}</p>}

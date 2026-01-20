@@ -15,7 +15,6 @@ function Nav() {
       try {
         const decoded = jwtDecode(token);
 
-        // Adjust based on your token structure
         const name =
           decoded?.name ||
           decoded?.fullName ||
@@ -103,7 +102,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "0 24px",
-    height: "72px", // Fixed height for a cleaner look
+    height: "72px", 
   },
   brand: { 
     display: "flex", 
@@ -146,7 +145,7 @@ const styles = {
   },
   activeTab: { 
     color: "#06B5AF", 
-    backgroundColor: "#F0FDFA", // Subtle teal background for active state
+    backgroundColor: "#F0FDFA", 
     fontWeight: "600"
   },
   userProfile: { 

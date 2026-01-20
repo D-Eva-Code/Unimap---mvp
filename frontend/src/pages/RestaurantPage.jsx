@@ -1,12 +1,23 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+import FeaturedFoodsCarousel from "../component/promoRestCarousel";
+
+import jollofImage from "../assets/jollof.jpg";
+import friedRiceImage from "../assets/fried.jpg";
+import egusiImage from "../assets/egusi.jpg";
+import plantainEggsImage from "../assets/plantain.jpg";
+import swallowImage from "../assets/swallow.jpg"; // for extra featured
+
+
 const meals = [
-  { id: 1, name: "Jollof Rice", price: "₦1,500", desc: "Smoky, party-style jollof with fried plantain." },
-  { id: 2, name: "Fried Rice", price: "₦1,700", desc: "Liver-loaded fried rice with veggies." },
-  { id: 3, name: "Egusi Soup", price: "₦2,000", desc: "Rich melon seed soup with assorted meat." },
-  { id: 4, name: "Plantain & Eggs", price: "₦1,200", desc: "Sweet fried plantains with spicy scrambled eggs." },
+  { id: 1, name: "Jollof Rice", price: "₦1,500", desc: "Smoky, party-style jollof with fried plantain.", image: jollofImage },
+  { id: 2, name: "Fried Rice", price: "₦1,700", desc: "Liver-loaded fried rice with veggies.", image: friedRiceImage },
+  { id: 3, name: "Egusi Soup", price: "₦2,000", desc: "Rich melon seed soup with assorted meat.", image: egusiImage },
+  { id: 4, name: "Plantain & Eggs", price: "₦1,200", desc: "Sweet fried plantains with spicy scrambled eggs.", image: plantainEggsImage },
+  { id: 5, name: "Swallow & Soup", price: "₦2,200", desc: "Assorted swallow served with soup.", image: swallowImage },
 ];
+
 
 export default function RestaurantPage() {
   const { id } = useParams();
@@ -19,7 +30,7 @@ export default function RestaurantPage() {
         <span style={styles.badge}>Open Now</span>
       </header>
 
-      {/* FEATURED MEAL SECTION */}
+      {/* FEATURED MEAL SECTION
       <section style={styles.featuredSection}>
         <div style={styles.featuredImage}>
           <div style={styles.imageOverlay}>Featured</div>
@@ -32,23 +43,55 @@ export default function RestaurantPage() {
             <button style={styles.primaryButton}>Add to Order</button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <h3 style={styles.sectionHeading}>Explore Our Menu</h3>
 
+
+<FeaturedFoodsCarousel />
+
+<h3 style={styles.sectionHeading}>Explore Our Menu</h3>
+<div style={styles.grid}>
+  {meals.map((meal) => (
+    <div key={meal.id} style={styles.mealCard}>
+      <div
+        style={{
+          ...styles.mealImage,
+          backgroundImage: `url(${meal.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div style={styles.cardBody}>
+        <h4 style={styles.mealName}>{meal.name}</h4>
+        <p style={styles.mealPrice}>{meal.price}</p>
+        <button style={styles.secondaryButton}>+</button>
+      </div>
+    </div>
+  ))}
+</div>
+
       {/* MEALS GRID */}
       <div style={styles.grid}>
-        {meals.slice(1).map((meal) => (
-          <div key={meal.id} style={styles.mealCard}>
-            <div style={styles.mealImage}></div>
-            <div style={styles.cardBody}>
-              <h4 style={styles.mealName}>{meal.name}</h4>
-              <p style={styles.mealPrice}>{meal.price}</p>
-              <button style={styles.secondaryButton}>+</button>
-            </div>
-          </div>
-        ))}
+  {meals.map((meal) => (
+    <div key={meal.id} style={styles.mealCard}>
+      <div
+        style={{
+          ...styles.mealImage,
+          backgroundImage: `url(${meal.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div style={styles.cardBody}>
+        <h4 style={styles.mealName}>{meal.name}</h4>
+        <p style={styles.mealPrice}>{meal.price}</p>
+        <button style={styles.secondaryButton}>+</button>
       </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 }
