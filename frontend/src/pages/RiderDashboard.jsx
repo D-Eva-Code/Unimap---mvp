@@ -1,25 +1,17 @@
-import { riderDashboardMock } from "../mocks/riderDashboard.mock";
+import { riderDashboardMock } from "../mocks/data";
 
 function RiderDashboard() {
   const data = riderDashboardMock;
+  console.log("RIDER DASHBOARD DATA 👉", data);
 
   return (
-    <div className="dashboard">
-      {/* HEADER */}
-      <header className="header">
-        <h2>Unimap+</h2>
-        <div>
-          <p>{data.rider.name}</p>
-          <small>{data.rider.isAvailable ? "Available" : "Unavailable"}</small>
-        </div>
-      </header>
-
+    <div className="rider-dashboard">
       {/* AVAILABILITY */}
       <section className="availability">
         <h4>Availability Status</h4>
-        <p>
-          You're {data.rider.isAvailable ? "available" : "unavailable"} to
-          receive delivery requests
+        <p className="rider-status">
+          You're {data.rider.available ? "available" : "unavailable"} to receive
+          delivery requests
         </p>
       </section>
 
@@ -27,48 +19,66 @@ function RiderDashboard() {
       <section className="delivery">
         <h4>Active Delivery</h4>
 
-        <p>
-          <strong>Pickup location:</strong> {data.activeDelivery.pickupLocation}
-        </p>
-
-        <p>
-          <strong>Dropoff location:</strong>{" "}
-          {data.activeDelivery.dropoffLocation}
-        </p>
-
-        <p>
-          <strong>Status:</strong> {data.activeDelivery.status}
-        </p>
-
-        {/* DELIVERY STEPS */}
-        <div className="steps">
-          <span className="active">Order accepted</span>
-          <span className="active">Picked up</span>
-          <span className="active">On the way</span>
-          <span>Delivered</span>
+        <div className="box-container">
+          <div className="box-left">
+            <div className="box">
+              <label className="pickup">Pickup location:</label>
+              <p>{data.activeDelivery.pickup}</p>
+            </div>
+            <div className="box">
+              <label className="pickup">Dropoff location:</label>
+              <p>{data.activeDelivery.dropoff}</p>
+            </div>
+            <div className="box">
+              <label className="pickup">Status:</label>
+              <p>{data.activeDelivery.status}</p>
+            </div>
+          </div>
+          <button className="view-status">View Delivery details</button>
         </div>
 
-        <p>Estimated delivery time: {data.activeDelivery.etaMinutes} mins</p>
-        <p>Distance remaining: {data.activeDelivery.distanceKm}km</p>
+        <div className="steps">
+          <div className="active">
+            <p>Order accepted</p>
+          </div>
+          <div className="active">
+            <p>Picked up</p>
+          </div>
+          <div className="active">
+            <p>On the way</p>
+          </div>
+          <div className="delivered">Delivered</div>
+        </div>
 
-        <button>View Delivery details</button>
+        <div className="delivery-time-box">
+          <div className="box">
+            <label className="dt">Estimated delivery time:</label>
+            <p>{data.activeDelivery.eta} mins</p>
+          </div>
+          <div className="box">
+            <label className="dt">Distance remaining:</label>
+            <p> {data.activeDelivery.distance} km</p>
+          </div>
+        </div>
       </section>
 
       {/* STATS */}
       <section className="stats">
-        <div>
-          <p>Deliveries completed</p>
-          <strong>{data.stats.deliveriesCompleted}</strong>
+        <div className="completed-d">
+          <p>Deliveries completed:</p>
+          <p>{data.stats.deliveriesCompleted}</p>
         </div>
 
-        <div>
-          <p>Earnings today</p>
-          <strong>{data.stats.earningsToday}</strong>
+        <div className="completed-d">
+          <p>Earnings today:</p>
+          <p>{data.stats.earningsToday}</p>
         </div>
       </section>
 
-      {/* CTA */}
-      <button className="primary">View Delivery Requests</button>
+      <button className="primary">
+        <p className="vd">View Delivery Requests</p>
+        <p> See available delivery jobs around campus</p>
+      </button>
     </div>
   );
 }

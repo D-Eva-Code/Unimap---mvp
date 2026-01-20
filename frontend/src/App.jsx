@@ -38,8 +38,8 @@ function App() {
           {/* Other standalone pages */}
           <Route path="order" element={<OrderFood />} />
         </Route>
-      </Route>
-    )
+      </Route>,
+    ),
   );
 
   return <RouterProvider router={router} />;
