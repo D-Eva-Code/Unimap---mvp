@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HomeandawayImage from "../assets/haaw.png";
+import campusBitesImage from "../assets/cb.jpg";
+import spicyKitchenImage from "../assets/sk.jpeg";
+import zzImage from "../assets/zz.jpg";
+import parfaitImage from "../assets/parf.jpg";
+import buka2Image from "../assets/buka2new.jpg";
+import PromoCarousel from '../component/PromoCarousel';
 
 const restaurantsData = [
-  { id: 1, name: "Mama Put", category: "Local Dishes", rating: "4.5", time: "20-30 min" },
-  { id: 2, name: "Campus Bites", category: "Fast Food", rating: "4.2", time: "10-15 min" },
-  { id: 3, name: "Spicy Kitchen", category: "African & Continental", rating: "4.8", time: "35-45 min" },
-  { id: 4, name: "Snack Hub", category: "Snacks & Drinks", rating: "4.0", time: "5-10 min" },
+  { id: 1, name: "Home and Away", category: "Local Dishes", rating: "4.5", time: "20-30 min",image:HomeandawayImage},
+  { id: 2, name: "Campus Bites", category: "Fast Food", rating: "4.2", time: "10-15 min",image:campusBitesImage },
+  { id: 3, name: "Spicy Kitchen", category: "African & Continental", rating: "4.8", time: "35-45 min",image:spicyKitchenImage },
+  { id: 4, name: "Snack Hub", category: "Snacks & Drinks", rating: "4.0", time: "5-10 min",image:parfaitImage },
+  { id: 5, name: "Breakfast Corner By Zzone", category: "Breakfast", rating: "3.8", time: "15-25 min",image:zzImage },
+  { id: 6, name: "Buka 2", category: "Local Dishes", rating: "4.0", time: "20-30 min",image:buka2Image },
 ];
 
 export default function OrderFood() {
@@ -33,6 +42,7 @@ export default function OrderFood() {
           style={styles.search}
         />
       </div>
+      <PromoCarousel />
 
       {/* Restaurant Grid */}
       {filteredRestaurants.length > 0 ? (
@@ -43,9 +53,16 @@ export default function OrderFood() {
               style={styles.card}
               onClick={() => navigate(`/uni/food/restaurant/${restaurant.id}`)}
             >
-              <div style={styles.imagePlaceholder}>
-                <div style={styles.timeTag}>{restaurant.time}</div>
-              </div>
+              <div
+  style={{
+    ...styles.imagePlaceholder,
+    backgroundImage: `url(${restaurant.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div style={styles.timeTag}>{restaurant.time}</div>
+</div>
 
               <div style={styles.info}>
                 <div style={styles.topRow}>
@@ -117,8 +134,9 @@ const styles = {
   },
   imagePlaceholder: {
     height: "200px",
-    backgroundColor: "#06B5AF",
     position: "relative",
+    borderTopLeftRadius: "20px",
+    borderTopRightRadius: "20px",
   },
   timeTag: {
     position: "absolute",

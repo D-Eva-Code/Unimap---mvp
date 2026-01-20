@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
-function Nav({ userName = "Guest User" }) {
+function Nav() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [userName, setUserName] = useState("Guest User");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+
+        // Adjust based on your token structure
+        const name =
+          decoded?.name ||
+          decoded?.fullName ||
+          decoded?.user?.name;
+
+        if (name) {
+          setUserName(name);
+        }
+      } catch (error) {
+        console.error("Invalid token:", error);
+        setUserName("Guest User");
+      }
+    }
+  }, []);
 
   const tabs = [
     { key: "map", label: "Map", path: "/uni/map" },
@@ -18,15 +44,16 @@ function Nav({ userName = "Guest User" }) {
         {/* Brand */}
         <div style={styles.brand} onClick={() => navigate("/uni/map")}>
           <div style={styles.logo}>U</div>
-          <span style={styles.brandText}>Unimap<span style={{color: '#06B5AF'}}>+</span></span>
+          <span style={styles.brandText}>
+            Unimap<span style={{ color: "#06B5AF" }}>+</span>
+          </span>
         </div>
 
         {/* Tabs */}
         <div style={styles.tabs}>
           {tabs.map((tab) => {
-            // Check if the path starts with the tab path to keep it active on sub-routes
             const isActive = location.pathname.startsWith(tab.path);
-            
+
             return (
               <div
                 key={tab.key}
@@ -49,7 +76,7 @@ function Nav({ userName = "Guest User" }) {
             <span style={styles.userRole}>Student</span>
           </div>
           <div style={styles.avatar}>
-            {userName.charAt(0)}
+            {userName.charAt(0).toUpperCase()}
           </div>
         </div>
       </div>
@@ -58,6 +85,7 @@ function Nav({ userName = "Guest User" }) {
 }
 
 export default Nav;
+
 
 const styles = {
   navContainer: {
