@@ -23,14 +23,15 @@ function App() {
         {/* Public Routes */}
         <Route index element={<Signup />} />
         <Route path="login" element={<Login />} />
-        <Route path="uni/*" element={<UniMap />} />  
-        <Route path="uni/food/restaurant/:id" element={<RestaurantPage />} />  
-
+        
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="vendor-dashboard" element={<VendorDashboard />} />
           <Route path="rider-dashboard" element={<RiderDashboard />} />
+          <Route path="uni/*" element={<UniMap />} />  
+          <Route path="uni/food/restaurant/:id" element={<RestaurantPage />} />  
+
 
           {/* Map + Tabs Section */}
          

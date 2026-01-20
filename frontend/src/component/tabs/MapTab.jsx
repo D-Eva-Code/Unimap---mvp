@@ -53,12 +53,12 @@ function RoutingEngine({ start, end, setDistance, setEta }) {
       map.removeControl(routingControlRef.current);
     }
 
-    // 2. Create the routing control
+    //the routing control
     routingControlRef.current = L.Routing.control({
       waypoints: [L.latLng(start[0], start[1]), L.latLng(end[0], end[1])],
       router: L.Routing.osrmv1({
-        // Try the standard OSRM demo server if the other one fails
-        serviceUrl: "https://router.project-osrm.org/route/v1",
+       
+        serviceUrl: "https://routing.openstreetmap.de/routed-foot/route/v1",
       }),
       lineOptions: { 
         styles: [{ color: "#06B5AF", weight: 7, opacity: 0.9 }],
