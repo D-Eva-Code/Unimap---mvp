@@ -5,8 +5,9 @@ import { jwtDecode } from "jwt-decode";
 import Nav from "../component/Nav"; 
 import MapTab from "../component/tabs/MapTab";
 import OrderFood from "../component/OrderFood";
-import MyOrders from "../component/tabs/MyOrders";
+import Cart from "../component/tabs/Cart";
 import CompletedOrders from "../component/tabs/CompletedOrders";
+import EmptyPage from "../component/EmptyPage"; // The empty page we just made
 
 
 const API_BASE_URL = "http://localhost:5000";
@@ -109,7 +110,8 @@ export default function UniMap() {
             />
             
             <Route path="food/*" element={<OrderFood />} />
-            <Route path="orders" element={<MyOrders />} />
+            <Route path="orders" element={<Cart />} />
+            <Route path="myorders" element={<EmptyPage />} />
             <Route path="completed" element={<CompletedOrders />} />
           </Routes>
         </div>

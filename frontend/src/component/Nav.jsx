@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import useCartStore from "../store/useCartStore"; // Adjust path
 
 function Nav() {
   const navigate = useNavigate();
   const location = useLocation();
-
   const [userName, setUserName] = useState("Guest User");
+
+  // Zustand: Listen to cartItems length
+  const cartCount = useCartStore((state) => state.cartItems.length);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       try {
         const decoded = jwtDecode(token);
-
-        const name =
-          decoded?.name ||
-          decoded?.fullName ||
-          decoded?.user?.name;
-
-        if (name) {
-          setUserName(name);
-        }
+        const name = decoded?.name || decoded?.fullName || decoded?.user?.name;
+        if (name) setUserName(name);
       } catch (error) {
         console.error("Invalid token:", error);
         setUserName("Guest User");
@@ -33,7 +28,7 @@ function Nav() {
   const tabs = [
     { key: "map", label: "Map", path: "/uni/map" },
     { key: "food", label: "Order Food", path: "/uni/food" },
-    { key: "orders", label: "My Orders", path: "/uni/orders" },
+    { key: "orders", label: "My Orders", path: "/uni/myorders" },
     { key: "completed", label: "Completed", path: "/uni/completed" },
   ];
 
@@ -52,7 +47,6 @@ function Nav() {
         <div style={styles.tabs}>
           {tabs.map((tab) => {
             const isActive = location.pathname.startsWith(tab.path);
-
             return (
               <div
                 key={tab.key}
@@ -68,23 +62,31 @@ function Nav() {
           })}
         </div>
 
-        {/* User Profile */}
-        <div style={styles.userProfile}>
-          <div style={styles.userInfo}>
-            <span style={styles.userName}>{userName}</span>
-            <span style={styles.userRole}>Student</span>
+        {/* Right Section: Cart + Profile */}
+        <div style={styles.rightSection}>
+          {/* Cart Button - Now leads to /uni/orders */}
+          <div style={styles.cartBtn} onClick={() => navigate("/uni/orders")}>
+            <span style={{ fontSize: "20px" }}>🛒</span>
+            {cartCount > 0 && (
+              <div style={styles.cartBadge}>{cartCount}</div>
+            )}
           </div>
-          <div style={styles.avatar}>
-            {userName.charAt(0).toUpperCase()}
+
+          {/* User Profile */}
+          <div style={styles.userProfile}>
+            <div style={styles.userInfo}>
+              <span style={styles.userName}>{userName}</span>
+              <span style={styles.userRole}>Student</span>
+            </div>
+            <div style={styles.avatar}>
+              {userName.charAt(0).toUpperCase()}
+            </div>
           </div>
         </div>
       </div>
     </nav>
   );
 }
-
-export default Nav;
-
 
 const styles = {
   navContainer: {
@@ -102,83 +104,32 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "0 24px",
-    height: "72px", 
+    height: "72px",
   },
-  brand: { 
-    display: "flex", 
-    gap: "12px", 
-    alignItems: "center", 
-    cursor: "pointer" 
-  },
+  brand: { display: "flex", gap: "12px", alignItems: "center", cursor: "pointer" },
   logo: { 
-    width: 32, 
-    height: 32, 
-    background: "linear-gradient(135deg, #06B5AF 0%, #048C87 100%)", 
-    borderRadius: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: "18px"
+    width: 32, height: 32, background: "linear-gradient(135deg, #06B5AF 0%, #048C87 100%)", 
+    borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: "bold", fontSize: "18px" 
   },
-  brandText: { 
-    fontSize: "20px", 
-    fontWeight: "800", 
-    color: "#1A202C", 
-    letterSpacing: "-0.5px" 
+  brandText: { fontSize: "20px", fontWeight: "800", color: "#1A202C", letterSpacing: "-0.5px" },
+  tabs: { display: "flex", gap: "8px", height: "100%", alignItems: "center" },
+  tab: { cursor: "pointer", color: "#718096", padding: "8px 16px", borderRadius: "8px", fontSize: "15px", fontWeight: "500", transition: "all 0.2s ease" },
+  activeTab: { color: "#06B5AF", backgroundColor: "#F0FDFA", fontWeight: "600" },
+  rightSection: { display: "flex", alignItems: "center", gap: "24px" },
+  cartBtn: { position: "relative", cursor: "pointer", display: "flex", alignItems: "center" },
+  cartBadge: {
+    position: "absolute", top: "-8px", right: "-8px", backgroundColor: "#06B5AF", color: "white",
+    fontSize: "10px", fontWeight: "bold", width: "18px", height: "18px", borderRadius: "50%",
+    display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white"
   },
-  tabs: { 
-    display: "flex", 
-    gap: "8px",
-    height: "100%",
-    alignItems: "center"
-  },
-  tab: { 
-    cursor: "pointer", 
-    color: "#718096", 
-    padding: "8px 16px",
-    borderRadius: "8px",
-    fontSize: "15px",
-    fontWeight: "500",
-    transition: "all 0.2s ease",
-  },
-  activeTab: { 
-    color: "#06B5AF", 
-    backgroundColor: "#F0FDFA", 
-    fontWeight: "600"
-  },
-  userProfile: { 
-    display: "flex", 
-    alignItems: "center", 
-    gap: "12px",
-    paddingLeft: "20px",
-    borderLeft: "1px solid #EDF2F7"
-  },
-  userInfo: { 
-    display: "flex", 
-    flexDirection: "column", 
-    textAlign: "right" 
-  },
-  userName: { 
-    fontSize: "14px", 
-    fontWeight: "600", 
-    color: "#2D3748" 
-  },
-  userRole: { 
-    fontSize: "12px", 
-    color: "#A0AEC0" 
-  },
+  userProfile: { display: "flex", alignItems: "center", gap: "12px", paddingLeft: "20px", borderLeft: "1px solid #EDF2F7" },
+  userInfo: { display: "flex", flexDirection: "column", textAlign: "right" },
+  userName: { fontSize: "14px", fontWeight: "600", color: "#2D3748" },
+  userRole: { fontSize: "12px", color: "#A0AEC0" },
   avatar: {
-    width: "36px",
-    height: "36px",
-    borderRadius: "50%",
-    backgroundColor: "#E2E8F0",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: "#4A5568"
+    width: "36px", height: "36px", borderRadius: "50%", backgroundColor: "#E2E8F0",
+    display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", fontWeight: "bold", color: "#4A5568"
   }
 };
+
+export default Nav;
