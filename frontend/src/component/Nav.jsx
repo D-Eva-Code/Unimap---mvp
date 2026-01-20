@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import useCartStore from "../store/useCartStore"; // Adjust path
+import useCartStore from "../store/useCartStore"; 
+import { logout } from "../utils/logout";
 
 function Nav() {
   const navigate = useNavigate();
   const location = useLocation();
   const [userName, setUserName] = useState("Guest User");
 
-  // Zustand: Listen to cartItems length
+  
   const cartCount = useCartStore((state) => state.cartItems.length);
 
   useEffect(() => {
@@ -62,9 +63,7 @@ function Nav() {
           })}
         </div>
 
-        {/* Right Section: Cart + Profile */}
         <div style={styles.rightSection}>
-          {/* Cart Button - Now leads to /uni/orders */}
           <div style={styles.cartBtn} onClick={() => navigate("/uni/orders")}>
             <span style={{ fontSize: "20px" }}>🛒</span>
             {cartCount > 0 && (
@@ -82,8 +81,23 @@ function Nav() {
               {userName.charAt(0).toUpperCase()}
             </div>
           </div>
+              <button
+      onClick={() => logout(navigate)}
+      style={{
+        background: "none",
+        border: "none",
+        color: "#E53E3E",
+        fontWeight: "700",
+        cursor: "pointer",
+      }}
+    >
+      Logout
+    </button>
         </div>
       </div>
+
+        
+  
     </nav>
   );
 }

@@ -35,7 +35,7 @@ function Signup() {
       }
 
       console.log("Signup success:", data);
-      alert("Account created successfully!");
+      // alert("Account created successfully!");
       navigate("/login");
       // Reset form
       setFullName("");
