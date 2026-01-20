@@ -1,10 +1,13 @@
 import React from "react";
 import useCartStore from "../../store/useCartStore"; // Adjust path as needed
 import { useNavigate } from "react-router-dom";
+import OrderSummary from "../OrderSummary";
+import { useState } from "react";
 
 export default function Cart() {
   const { cartItems, clearCart } = useCartStore();
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
   // Calculate Total Price
   const total = cartItems.reduce((acc, item) => {
@@ -56,8 +59,18 @@ export default function Cart() {
           <span>Total Amount:</span>
           <span style={styles.totalPrice}>${total.toFixed(2)}</span>
         </div>
-        <button style={styles.checkoutBtn}>Place Order</button>
+        <button style={styles.checkoutBtn} onClick={() => setShowPopup(true)}>
+  Place Order
+</button>
+
       </div>
+      {showPopup && (
+  <OrderSummary 
+    cart={cartItems} 
+    onClose={() => setShowPopup(false)} 
+  />
+)}
+
     </div>
   );
 }
