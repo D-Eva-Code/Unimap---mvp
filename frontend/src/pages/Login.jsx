@@ -46,8 +46,10 @@ function Login() {
         navigate("/vendor-dashboard"); // vendor dashboard
       } else if (role === "driver") {
         navigate("/rider-dashboard"); // rider dashboard
-      } else if (role === "student") {
-        navigate("/map"); // student map page
+      }
+        else if (role === "student") {
+        navigate("/uni/map"); // student map page
+  
       } else {
         navigate("/login");
       }
