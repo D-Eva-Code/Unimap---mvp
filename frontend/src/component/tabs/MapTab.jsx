@@ -114,6 +114,14 @@ export default function MapTab({
 
     mapSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+const redIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  shadowSize: [41, 41],
+});
 
   return (
     <div style={styles.container}>
@@ -155,7 +163,7 @@ export default function MapTab({
             <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
 
             {locations.map((loc) => (
-              <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={buildingIcon}>
+              <Marker key={loc.id} position={[loc.latitude, loc.longitude]} icon={redIcon}>
                 <Popup>
                   <strong>{loc.name}</strong>
                   <button onClick={() => handleDestinationSelect(loc)} style={styles.goButton}>Go</button>
@@ -163,7 +171,7 @@ export default function MapTab({
               </Marker>
             ))}
 
-            {userPos && <Marker position={userPos} icon={userIcon} />}
+            {userPos && <Marker position={userPos} icon={redIcon} />}
             
             {userPos && destination && (
               <RoutingEngine start={userPos} end={destination} setDistance={setDistance} setEta={setEta} />
