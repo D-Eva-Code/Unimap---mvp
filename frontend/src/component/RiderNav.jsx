@@ -1,31 +1,52 @@
-function RiderNav({ rider }) {
-  return (
-    <>
-      <nav style={styles.navContainer}>
-        <div style={styles.navContent}>
-          {/* Brand */}
-          <div style={styles.brand} onClick={() => navigate("/uni/map")}>
-            <div style={styles.logo}>U</div>
-            <span style={styles.brandText}>
-              Unimap<span style={{ color: "#06B5AF" }}>+</span>
-            </span>
-          </div>
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
-          {/* User Profile */}
-          <div style={styles.userProfile}>
-            <div style={styles.userInfo}>
-              <span style={styles.userName}>{rider.name}</span>
-              <span style={styles.userRole}>Rider</span>
-            </div>
-            <div style={styles.avatar}>{rider.name.charAt(0)}</div>
+
+function RiderNav() {
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
+  let riderName = "Rider";
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      riderName = decoded.name || "Rider";
+    } catch (err) {
+      console.error("Invalid token", err);
+    }
+  }
+
+  return (
+    <nav style={styles.navContainer}>
+      <div style={styles.navContent}>
+        {/* Brand */}
+        <div style={styles.brand} onClick={() => navigate("/uni/map")}>
+          <div style={styles.logo}>U</div>
+          <span style={styles.brandText}>
+            Unimap<span style={{ color: "#06B5AF" }}>+</span>
+          </span>
+        </div>
+
+        {/* User Profile */}
+        <div style={styles.userProfile}>
+          <div style={styles.userInfo}>
+            <span style={styles.userName}>{riderName}</span>
+            <span style={styles.userRole}>Rider</span>
+          </div>
+          <div style={styles.avatar}>
+            {riderName.charAt(0).toUpperCase()}
           </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }
 
 export default RiderNav;
+
+
 
 const styles = {
   navContainer: {

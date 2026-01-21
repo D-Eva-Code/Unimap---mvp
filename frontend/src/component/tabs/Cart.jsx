@@ -57,7 +57,7 @@ export default function Cart() {
       <div style={styles.footer}>
         <div style={styles.totalSection}>
           <span>Total Amount:</span>
-          <span style={styles.totalPrice}>${total.toFixed(2)}</span>
+          <span style={styles.totalPrice}>₦{total.toFixed(2)}</span>
         </div>
         <button style={styles.checkoutBtn} onClick={() => setShowPopup(true)}>
   Place Order

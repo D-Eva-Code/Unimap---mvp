@@ -2,12 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { restaurants, menuItems } from "../data/restaurantData";
 import FeaturedFoodsCarousel from "../component/promoRestCarousel";
-import useCartStore from "../store/useCartStore"; // Adjust path
+import useCartStore from "../store/useCartStore";
 
 export default function RestaurantPage() {
   const { id } = useParams();
   
-  // Zustand: Get the add function
+
   const addToCart = useCartStore((state) => state.addToCart);
 
   const restaurant = restaurants.find((r) => r.id === parseInt(id));

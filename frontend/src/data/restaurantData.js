@@ -10,6 +10,8 @@ import jollofImage from "../assets/jollof.jpg";
 import friedRiceImage from "../assets/fried.jpg";
 import egusiImage from "../assets/egusi.jpg";
 import plantainEggsImage from "../assets/plantain.jpg";
+import fantaImage from "../assets/fanta.jpg";
+import cokeImage from "../assets/coke.jpg";
 
 export const restaurants = [
   { id: 1, name: "Home and Away", category: "Local Dishes", rating: "4.5", time: "20-30 min", image: HomeandawayImage },
@@ -23,6 +25,9 @@ export const restaurants = [
 export const menuItems = [
   { id: 1, name: "Jollof Rice", price: "₦1,500", image: jollofImage },
   { id: 2, name: "Fried Rice", price: "₦1,700", image: friedRiceImage },
+  { id: 6, name: "Coke", price: "₦300", image: cokeImage },
   { id: 3, name: "Egusi Soup", price: "₦2,000", image: egusiImage },
   { id: 4, name: "Plantain & Eggs", price: "₦1,200", image: plantainEggsImage },
+  { id: 5, name: "fanta", price: "₦300", image: fantaImage },
+  
 ];

@@ -10,13 +10,12 @@ const useCartStore = create(
       addToCart: (product) => set((state) => ({
         cartItems: [...state.cartItems, product]
       })),
-
-      // Action to clear cart
+      
       clearCart: () => set({ cartItems: [] }),
     }),
     {
       name: 'cart-storage', // unique name for the item in local storage
-      storage: createJSONStorage(() => localStorage), // defaults to localStorage
+      storage: createJSONStorage(() => localStorage), 
     }
   )
 );

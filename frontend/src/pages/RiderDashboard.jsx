@@ -11,7 +11,7 @@ function RiderDashboard() {
     }));
   };
   const data = riderDashboardMock;
-  console.log("RIDER DASHBOARD DATA 👉", data);
+  console.log("RIDER DASHBOARD DATA", data);
 
   return (
     <>
